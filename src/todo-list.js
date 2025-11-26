@@ -73,9 +73,44 @@ export default (() => {
     }
 
     // Update
+    function updateTodoList(uuid, title = null, description = null) {
+        for (const list of lists) {
+            if (list.uuid === uuid) {
+                if (title !== null) {
+                    list.title = title
+                }
+
+                if (description !== null) {
+                    list.description = description
+                }
+
+                return
+            }
+        }
+    }
+
+    function addItemToList(todoListUUID, todoItemUUID) {
+        for (const list of lists) {
+            if (list.uuid === todoListUUID) {
+                list.addTodo(todoItemUUID)
+
+                return
+            }
+        }
+    }
+
+    function removeItemFromList(todoListUUID, todoItemUUID) {
+        for (const list of lists) {
+            if (list.uuid === todoListUUID) {
+                list.removeTodo(todoItemUUID)
+
+                return
+            }
+        }
+    }
 
     // Delete
 
 
-    return { createTodoList, fillFromJSON, getTodoList, toJSON }
+    return { createTodoList, fillFromJSON, getTodoList, toJSON, updateTodoList, addItemToList, removeItemFromList }
 })()
