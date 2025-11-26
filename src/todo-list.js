@@ -40,6 +40,22 @@ export default (() => {
     const lists = []
 
     // Create
+    function createTodoList(title, description) {
+        lists.push(new TodoList(title, description))
+    }
+
+    function fillFromJSON(json) {
+        const data = JSON.parse(json)
+        for (const list of data) {
+            const newList = new TodoList(list.title, list.description)
+
+            for (const todo of list.todos) {
+                newList.addTodo(todo)
+            }
+
+            lists.push(newList)
+        }
+    }
 
     // Read
 
@@ -47,4 +63,6 @@ export default (() => {
 
     // Delete
 
+
+    return { createTodoList, fillFromJSON }
 })()
