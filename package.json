@@ -1,7 +1,7 @@
 {
-  "name": "webpack-template",
+  "name": "todo-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "TOP project for a todo list.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
-  "author": "",
+  "author": "Miguel Padilla <mp7228757@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^7.1.2",
