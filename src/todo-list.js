@@ -58,11 +58,24 @@ export default (() => {
     }
 
     // Read
+    function getTodoList(uuid) {
+        for (const list of lists) {
+            if (list.uuid === uuid) {
+                return list
+            }
+        }
+
+        return null
+    }
+
+    function toJSON() {
+        return JSON.stringify(lists)
+    }
 
     // Update
 
     // Delete
 
 
-    return { createTodoList, fillFromJSON }
+    return { createTodoList, fillFromJSON, getTodoList, toJSON }
 })()
