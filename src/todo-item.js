@@ -114,5 +114,5 @@ export default (() => {
         }
     }
 
-    return { createTodo, fillFromJSON, getTodo, getTodos, toJSON, deleteTodo }
+    return { createTodo, fillFromJSON, getTodo, getTodos, toJSON, updateTodo, deleteTodo }
 })();
