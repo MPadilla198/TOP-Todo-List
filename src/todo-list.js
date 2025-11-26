@@ -110,7 +110,18 @@ export default (() => {
     }
 
     // Delete
+    function deleteTodoList(uuid) {
+        let index = 0
+        for (const list of lists) {
+            if (list.uuid === uuid) {
+                lists = lists.splice(index, 1)
 
+                return
+            }
 
-    return { createTodoList, fillFromJSON, getTodoList, toJSON, updateTodoList, addItemToList, removeItemFromList }
+            index++
+        }
+    }
+
+    return { createTodoList, fillFromJSON, getTodoList, toJSON, updateTodoList, addItemToList, removeItemFromList, deleteTodoList }
 })()
