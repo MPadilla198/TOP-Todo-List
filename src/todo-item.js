@@ -108,9 +108,15 @@ export default (() => {
 
     // Delete
     function deleteTodo(uuid) {
-        const index = todoItems.findIndex(uuid)
-        if (index !== -1) {
-            todoItems = todoItems.splice(index, 1)
+        let index = 0
+        for (const item of todoItems) {
+            if (item.uuid === uuid) {
+                todoItems = todoItems.splice(index, 1)
+
+                return
+            }
+
+            index++
         }
     }
 
