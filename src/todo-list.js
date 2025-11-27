@@ -14,6 +14,8 @@ export class TodoList {
     get title() { return this.#title }
     set title(str) { this.#title = str }
 
+    get todos() { return this.#todos }
+
     addTodo(uuid) {
         this.#todos.push(uuid)
     }
@@ -36,7 +38,9 @@ export default (() => {
 
     // Create
     function createTodoList(title) {
-        lists.push(new TodoList(title))
+        const newList = new TodoList(title)
+        lists.push(newList)
+        return newList.uuid
     }
 
     function fillFromJSON(json) {

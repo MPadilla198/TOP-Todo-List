@@ -66,7 +66,7 @@ export default (() => {
 
     function getTodos(uuids) {
         uuids = new Set(uuids)
-        result = []
+        let result = []
 
         for (const item of todoItems) {
             if (uuids.has(item.uuid)) {
