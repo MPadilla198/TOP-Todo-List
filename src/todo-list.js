@@ -1,13 +1,11 @@
 export class TodoList {
     #uuid
     #title
-    #description
     #todos
 
     constructor(title, description) {
         this.#uuid = self.crypto.randomUUID()
         this.#title = title
-        this.#description = description
         this.#todos = []
     }
 
@@ -15,9 +13,6 @@ export class TodoList {
 
     get title() { return this.#title }
     set title(str) { this.#title = str }
-
-    get description() { return this.#description }
-    set description(str) { this.#description = str }
 
     addTodo(uuid) {
         this.#todos.push(uuid)
@@ -40,14 +35,14 @@ export default (() => {
     const lists = []
 
     // Create
-    function createTodoList(title, description) {
-        lists.push(new TodoList(title, description))
+    function createTodoList(title) {
+        lists.push(new TodoList(title))
     }
 
     function fillFromJSON(json) {
         const data = JSON.parse(json)
         for (const list of data) {
-            const newList = new TodoList(list.title, list.description)
+            const newList = new TodoList(list.title)
 
             for (const todo of list.todos) {
                 newList.addTodo(todo)
@@ -73,15 +68,11 @@ export default (() => {
     }
 
     // Update
-    function updateTodoList(uuid, title = null, description = null) {
+    function updateTodoList(uuid, title = null) {
         for (const list of lists) {
             if (list.uuid === uuid) {
                 if (title !== null) {
                     list.title = title
-                }
-
-                if (description !== null) {
-                    list.description = description
                 }
 
                 return
