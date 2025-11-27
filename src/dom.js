@@ -39,6 +39,7 @@ export default (() => {
 
             const div = document.createElement('div')
             div.classList.add('list')
+            div.dataset.id = list.uuid
 
             const title = document.createElement('p')
             title.textContent = list.title

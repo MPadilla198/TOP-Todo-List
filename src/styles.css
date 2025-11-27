@@ -44,6 +44,10 @@ aside {
     width: 100%;
 }
 
+.selected-list {
+    background-color: aqua;
+}
+
 section {
     display: grid;
     grid-template-rows: 4fr 1fr;
