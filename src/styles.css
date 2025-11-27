@@ -1,4 +1,49 @@
 body {
+    margin: 0;
+
     display: grid;
     grid-template-columns: 1fr 3fr;
+
+    height: 100vh;
+}
+
+aside {
+    display: grid;
+    grid-template-rows: 1fr 5fr;
+
+    background-color: lightcoral;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lists {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    overflow-y: auto;
+}
+
+section {
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+}
+
+.todos {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+
+    overflow-y: auto;
+}
+
+.todo-creation-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
