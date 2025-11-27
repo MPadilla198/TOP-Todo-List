@@ -30,3 +30,8 @@ document.getElementById('new-list-button').addEventListener('click', () => {
     // Reset input field
     newListNameInput.value = ''
 })
+
+// Initial list
+TodoListManager.createTodoList('General')
+const lists = TodoListManager.getTodoLists()
+domManager.renderLists(lists)
