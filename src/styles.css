@@ -9,7 +9,7 @@ body {
 
 aside {
     display: grid;
-    grid-template-rows: 1fr 5fr;
+    grid-template-rows: 1fr 1fr 4fr;
 
     background-color: lightcoral;
 }
@@ -17,6 +17,14 @@ aside {
 .header {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.list-creation-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    justify-content: start;
     align-items: center;
 }
 
