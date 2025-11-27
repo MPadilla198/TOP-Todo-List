@@ -10,17 +10,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function setCurrentlySelected(uuid) {
-    // Update currentlySelected
-    currentlySelected = uuid
-
-    // Add style to currently selected
-    const lists = document.querySelectorAll('.list')
-    for (const list of lists) {
-        if (list.dataset.id === uuid) {
-            list.classList.add('selected-list')
-            break
-        }
-    }
+    domManager.setSelectedList(uuid)
 
     // Update todos to render those of currently selected
     const list = TodoListManager.getTodoList(uuid)
@@ -29,19 +19,7 @@ function setCurrentlySelected(uuid) {
 }
 
 function replaceCurrentlySelected(uuid) {
-    // Do nothing if already selected
-    if (currentlySelected === uuid) {
-        return
-    }
-
-    // Remove styles from currently selected
-    const lists = document.querySelectorAll('.list')
-    for (const list of lists) {
-        if (list.dataset.id === currentlySelected) {
-            list.classList.remove('selected-list')
-            break
-        }
-    }
+    domManager.removeSelectedList(uuid)
 
     setCurrentlySelected(uuid)
 }
@@ -77,8 +55,6 @@ document.getElementById('new-list-button').addEventListener('click', () => {
 
     // Reset input field
     newListNameInput.value = ''
-
-    setCurrentlySelected(currentlySelected)
 })
 
 // Initial list
@@ -86,5 +62,4 @@ const generalUUID = TodoListManager.createTodoList('General')
 const lists = TodoListManager.getTodoLists()
 domManager.renderLists(lists)
 
-let currentlySelected = null
 setCurrentlySelected(generalUUID)

@@ -5,6 +5,8 @@ export default (() => {
     const listsContainer = document.querySelector('.lists')
     const todosContainer = document.querySelector('.todos')
 
+    let currentlySelected = null
+
     function resetTodos() {
         while (todosContainer.firstChild) {
             todosContainer.removeChild(todosContainer.firstChild)
@@ -14,6 +16,37 @@ export default (() => {
     function resetLists() {
         while (listsContainer.firstChild) {
             listsContainer.removeChild(listsContainer.firstChild)
+        }
+    }
+
+    function removeSelectedList(uuid) {
+        // Do nothing if already selected
+        if (currentlySelected === uuid) {
+            return
+        }
+
+        // TODO Move this paragraph to domManager
+        // Remove styles from currently selected
+        const lists = document.querySelectorAll('.list')
+        for (const list of lists) {
+            if (list.dataset.id === currentlySelected) {
+                list.classList.remove('selected-list')
+                break
+            }
+        }
+    }
+
+    function setSelectedList(uuid) {
+        // Update currentlySelected
+        currentlySelected = uuid
+
+        // Add style to currently selected
+        const lists = document.querySelectorAll('.list')
+        for (const list of lists) {
+            if (list.dataset.id === uuid) {
+                list.classList.add('selected-list')
+                break
+            }
         }
     }
 
@@ -46,7 +79,9 @@ export default (() => {
             div.appendChild(title)
             listsContainer.appendChild(div)
         }
+
+        setSelectedList(currentlySelected)
     }
 
-    return { renderTodos, renderLists }
+    return { renderTodos, renderLists, removeSelectedList, setSelectedList }
 })()
