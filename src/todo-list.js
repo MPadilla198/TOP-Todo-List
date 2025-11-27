@@ -64,7 +64,7 @@ export default (() => {
     }
 
     function getTodoLists() {
-        return JSON.parse(JSON.stringify(lists))
+        return lists
     }
 
     function toJSON() {
