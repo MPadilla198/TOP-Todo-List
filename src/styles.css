@@ -37,6 +37,13 @@ aside {
     overflow-y: auto;
 }
 
+.list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
 section {
     display: grid;
     grid-template-rows: 4fr 1fr;

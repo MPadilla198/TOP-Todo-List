@@ -37,7 +37,13 @@ export default (() => {
                 throw new Error(`A list in lists given to renderLists is not instance of TodoList: ${list}`)
             }
 
-            // Add here
+            const div = document.createElement('div')
+            div.classList.add('list')
+
+            const title = document.createElement('p')
+            title.textContent = list.title
+            div.appendChild(title)
+            listsContainer.appendChild(div)
         }
     }
 
