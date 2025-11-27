@@ -63,6 +63,10 @@ export default (() => {
         return null
     }
 
+    function getTodoLists() {
+        return JSON.parse(JSON.stringify(lists))
+    }
+
     function toJSON() {
         return JSON.stringify(lists)
     }
@@ -114,5 +118,5 @@ export default (() => {
         }
     }
 
-    return { createTodoList, fillFromJSON, getTodoList, toJSON, updateTodoList, addItemToList, removeItemFromList, deleteTodoList }
+    return { createTodoList, fillFromJSON, getTodoList, getTodoLists, toJSON, updateTodoList, addItemToList, removeItemFromList, deleteTodoList }
 })()
