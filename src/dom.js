@@ -84,6 +84,10 @@ export default (() => {
         }
     }
 
+    function getSelectedList() {
+        return currentlySelected
+    }
+
     function renderTodos(todos) {
         resetTodos()
 
@@ -93,6 +97,7 @@ export default (() => {
             }
 
             // Add here
+            console.log(todo)
         }
     }
 
@@ -117,5 +122,5 @@ export default (() => {
         setSelectedList(currentlySelected)
     }
 
-    return { renderTodos, renderLists, removeSelectedList, setSelectedList, getNewListName, resetNewListInput, getUUIDFromEventTarget, getNewTodoInputs, resetNewTodoInputs }
+    return { renderTodos, renderLists, removeSelectedList, setSelectedList, getNewListName, resetNewListInput, getUUIDFromEventTarget, getNewTodoInputs, resetNewTodoInputs, getSelectedList }
 })()
