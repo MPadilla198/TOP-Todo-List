@@ -25,7 +25,28 @@
         <div class="todos">
         </div>
         <div class="todo-creation-bar">
-
+            <h2>Add Todo</h2>
+            <div>
+                <label for="title">Title</label>
+                <input id="title" type="text">
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" rows="3"></textarea>
+            </div>
+            <div>
+                <label for="due-date">Due Date</label>
+                <input id="due-date" type="datetime-local">
+            </div>
+            <div>
+                <label for="priority">Priority</label>
+                <select name="priority" id="priority">
+                    <option value="low" selected>Low</option>
+                    <option value="normal">Normal</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+            <button id="new-todo-button">Add New Todo</button>
         </div>
     </section>
 </body>

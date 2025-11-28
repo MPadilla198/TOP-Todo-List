@@ -65,4 +65,39 @@ section {
 .todo-creation-bar {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+
+    background-color: antiquewhite;
+}
+
+.todo-creation-bar>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 4px;
+
+    padding: 8px;
+}
+
+.todo-creation-bar input, 
+.todo-creation-bar textarea,
+.todo-creation-bar select {
+    padding: 4px;
+    border-radius: 8px;
+    border: none;
+}
+
+.todo-creation-bar>h2 {
+    grid-column: 1/5;
+    justify-self: center;
+    margin: 8px 0;
+}
+
+.todo-creation-bar>button {
+    grid-column: 1/5;
+
+    justify-self: center;
+
+    width: fit-content;
+    height: fit-content;
+    padding: 8px;
 }
