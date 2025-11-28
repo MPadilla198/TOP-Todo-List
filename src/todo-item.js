@@ -42,7 +42,10 @@ export default (() => {
 
     // Create
     function createTodo(title, description, dueDate, priority = Priority.LOW) {
-        todoItems.push(new TodoItem(title, description, dueDate, priority))
+        const newTodo = new TodoItem(title, description, dueDate, priority)
+        todoItems.push(newTodo)
+
+        return newTodo.uuid
     }
 
     function fillFromJSON(json) {
