@@ -19,6 +19,24 @@ export default (() => {
         }
     }
 
+    function getUUIDFromEventTarget(event) {
+        let target = event.target
+        if (!target.dataset.id) {
+            // If target element does not have data-id, then the parent should have it
+            target = target.parentNode
+        }
+
+        return target.dataset.id
+    }
+
+    function getNewListName() {
+        return document.getElementById('list-name').value
+    }
+
+    function resetNewListInput() {
+        document.getElementById('list-name').value = ''
+    }
+
     function removeSelectedList(uuid) {
         // Do nothing if already selected
         if (currentlySelected === uuid) {
@@ -83,5 +101,5 @@ export default (() => {
         setSelectedList(currentlySelected)
     }
 
-    return { renderTodos, renderLists, removeSelectedList, setSelectedList }
+    return { renderTodos, renderLists, removeSelectedList, setSelectedList, getNewListName, resetNewListInput, getUUIDFromEventTarget }
 })()

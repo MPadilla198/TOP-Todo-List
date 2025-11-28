@@ -18,33 +18,19 @@ function setCurrentlySelected(uuid) {
     domManager.renderTodos(todos)
 }
 
-function replaceCurrentlySelected(uuid) {
-    domManager.removeSelectedList(uuid)
-
-    setCurrentlySelected(uuid)
-}
-
 document.querySelector('.lists').addEventListener('click', (event) => {
-    let target = event.target
-    if (!target.dataset.id) {
-        // If target element does not have data-id, then the parent should have it
-        target = target.parentNode
-    }
-
-    const uuid = target.dataset.id
-    replaceCurrentlySelected(uuid)
+    const uuid = domManager.getUUIDFromEventTarget(event)
+    domManager.removeSelectedList(uuid)
+    setCurrentlySelected(uuid)
 })
 
 document.getElementById('new-list-button').addEventListener('click', () => {
-    const newListNameInput = document.getElementById('list-name')
-    const newListName = newListNameInput.value
+    const newListName = domManager.getNewListName()
 
     if (newListName.length === 0) {
         console.log('A new list must have a name of non-zero length')
         return
     }
-
-    console.log(`New list with name ${newListName}`)
 
     // Add new list to manager
     TodoListManager.createTodoList(newListName)
@@ -54,7 +40,7 @@ document.getElementById('new-list-button').addEventListener('click', () => {
     domManager.renderLists(lists)
 
     // Reset input field
-    newListNameInput.value = ''
+    domManager.resetNewListInput()
 })
 
 // Initial list
