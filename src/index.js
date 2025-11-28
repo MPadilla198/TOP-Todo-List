@@ -21,7 +21,22 @@ function setCurrentlySelected(uuid) {
 
 document.getElementById('new-todo-button').addEventListener('click', (event) => {
     const todoInputs = domManager.getNewTodoInputs()
-    console.log(todoInputs)
+
+    if (!validator.isNewTodoValid(todoInputs)) {
+        return
+    }
+
+    // Add new todo item in manager
+    const todoUUID = TodoItemManager.createTodo(todoInputs.title, todoInputs.description, todoInputs.dueDate, todoInputs.priority)
+
+    // Add item to currently selected list
+    const currentlySelected = domManager.getSelectedList()
+    TodoListManager.addItemToList(currentlySelected, todoUUID)
+
+    // Get todos of currently selected list and render
+    const list = TodoListManager.getTodoList(currentlySelected)
+    const todos = TodoItemManager.getTodos(list.todos)
+    domManager.renderTodos(todos)
 
     domManager.resetNewTodoInputs()
 })
