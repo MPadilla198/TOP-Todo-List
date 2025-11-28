@@ -10,13 +10,17 @@ if (process.env.NODE_ENV !== 'production') {
     console.log('Looks like we are in development mode!')
 }
 
+function renderTodos(uuid) {
+    const list = TodoListManager.getTodoList(uuid)
+    const todos = TodoItemManager.getTodos(list.todos)
+    domManager.renderTodos(todos)
+}
+
 function setCurrentlySelected(uuid) {
     domManager.setSelectedList(uuid)
 
     // Update todos to render those of currently selected
-    const list = TodoListManager.getTodoList(uuid)
-    const todos = TodoItemManager.getTodos(list.todos)
-    domManager.renderTodos(todos)
+    renderTodos(uuid)
 }
 
 document.getElementById('new-todo-button').addEventListener('click', (event) => {
@@ -34,9 +38,7 @@ document.getElementById('new-todo-button').addEventListener('click', (event) => 
     TodoListManager.addItemToList(currentlySelected, todoUUID)
 
     // Get todos of currently selected list and render
-    const list = TodoListManager.getTodoList(currentlySelected)
-    const todos = TodoItemManager.getTodos(list.todos)
-    domManager.renderTodos(todos)
+    renderTodos(currentlySelected)
 
     domManager.resetNewTodoInputs()
 })
