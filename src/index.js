@@ -19,6 +19,13 @@ function setCurrentlySelected(uuid) {
     domManager.renderTodos(todos)
 }
 
+document.getElementById('new-todo-button').addEventListener('click', (event) => {
+    const todoInputs = domManager.getNewTodoInputs()
+    console.log(todoInputs)
+
+    domManager.resetNewTodoInputs()
+})
+
 document.querySelector('.lists').addEventListener('click', (event) => {
     const uuid = domManager.getUUIDFromEventTarget(event)
     domManager.removeSelectedList(uuid)

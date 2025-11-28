@@ -37,6 +37,22 @@ export default (() => {
         document.getElementById('list-name').value = ''
     }
 
+    function getNewTodoInputs() {
+        return {
+            title: document.getElementById('todo-title').value,
+            description: document.getElementById('todo-description').value,
+            dueDate: document.getElementById('todo-due-date').value,
+            priority: document.getElementById('todo-priority').value
+        }
+    }
+
+    function resetNewTodoInputs() {
+        document.getElementById('todo-title').value = ''
+        document.getElementById('todo-description').value = ''
+        document.getElementById('todo-due-date').value = ''
+        document.getElementById('todo-priority').value = 'low'
+    }
+
     function removeSelectedList(uuid) {
         // Do nothing if already selected
         if (currentlySelected === uuid) {
@@ -101,5 +117,5 @@ export default (() => {
         setSelectedList(currentlySelected)
     }
 
-    return { renderTodos, renderLists, removeSelectedList, setSelectedList, getNewListName, resetNewListInput, getUUIDFromEventTarget }
+    return { renderTodos, renderLists, removeSelectedList, setSelectedList, getNewListName, resetNewListInput, getUUIDFromEventTarget, getNewTodoInputs, resetNewTodoInputs }
 })()
