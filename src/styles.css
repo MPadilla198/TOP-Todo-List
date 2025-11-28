@@ -34,7 +34,8 @@ aside {
     justify-content: start;
     align-items: center;
 
-    overflow-y: auto;
+    height: 66.6vh;
+    overflow-y: scroll;
 }
 
 .list {
@@ -59,6 +60,7 @@ section {
     justify-content: start;
     align-items: center;
 
+    height: 75vh;
     overflow-y: auto;
 }
 
