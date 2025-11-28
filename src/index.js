@@ -4,6 +4,7 @@ import TodoItemManager, { TodoItem, Priority } from './todo-item'
 import TodoListManager, { TodoList } from './todo-list'
 import StorageManager from './storage'
 import domManager from './dom'
+import validator from './validator'
 
 if (process.env.NODE_ENV !== 'production') {
     console.log('Looks like we are in development mode!')
@@ -27,8 +28,8 @@ document.querySelector('.lists').addEventListener('click', (event) => {
 document.getElementById('new-list-button').addEventListener('click', () => {
     const newListName = domManager.getNewListName()
 
-    if (newListName.length === 0) {
-        console.log('A new list must have a name of non-zero length')
+    // If name is not valid, then do nothing
+    if (!validator.isNewListNameValid(newListName)) {
         return
     }
 
